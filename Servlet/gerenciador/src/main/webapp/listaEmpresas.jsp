@@ -5,15 +5,17 @@
     
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<ul>
-		<c:forEach items="${empresas}" var="empresa">
-			<li>${empresa.nome}</li>
-		</c:forEach>
-	</ul>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	
+	<body>
+		<ul>
+			<c:forEach items="${empresas}" var="empresa">
+				<li>${empresa.nome}</li>
+			</c:forEach>
+		</ul>
+	</body>
+	
 </html>
