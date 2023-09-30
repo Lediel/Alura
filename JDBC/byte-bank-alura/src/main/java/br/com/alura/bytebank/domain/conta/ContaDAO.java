@@ -95,8 +95,7 @@ public class ContaDAO {
                 String cpf = resultSet.getString(4);
                 String email = resultSet.getString(5);
 
-                DadosCadastroCliente dadosCadastroCliente =
-                        new DadosCadastroCliente(nome, cpf, email);
+                DadosCadastroCliente dadosCadastroCliente = new DadosCadastroCliente(nome, cpf, email);
                 Cliente cliente = new Cliente(dadosCadastroCliente);
 
                 conta = new Conta(numeroRecuperado, saldo, cliente);
