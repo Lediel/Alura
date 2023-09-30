@@ -114,10 +114,36 @@ public class ContaDAO {
         String sql = "UPDATE conta SET saldo = ? WHERE numero = ?";
 
         try {
+            conn.setAutoCommit(false);
+
             ps = conn.prepareStatement(sql);
 
             ps.setBigDecimal(1, valor);
             ps.setInt(2, numero);
+
+            ps.execute();
+
+            conn.commit();
+            ps.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deletar(Integer numeroDaConta) {
+        String sql = "DELETE FROM conta WHERE numero = ?";
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, numeroDaConta);
 
             ps.execute();
             ps.close();
