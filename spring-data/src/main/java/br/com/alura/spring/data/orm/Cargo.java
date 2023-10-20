@@ -2,6 +2,9 @@ package br.com.alura.spring.data.orm;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "cargos")
 public class Cargo {
@@ -10,6 +13,8 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
+    @OneToMany(mappedBy = "cargo")
+    private List<Funcionario> funcionario;
 
     public Integer getId() {
         return id;
