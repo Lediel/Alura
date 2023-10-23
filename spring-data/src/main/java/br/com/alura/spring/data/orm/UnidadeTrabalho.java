@@ -16,6 +16,14 @@ public class UnidadeTrabalho {
     @ManyToMany(mappedBy = "unidadeTrabalhos", fetch = FetchType.EAGER)
     private List<Funcionario> funcionarios;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getDescricao() {
         return descricao;
     }
@@ -30,5 +38,12 @@ public class UnidadeTrabalho {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public String toString() {
+        return "Unidades: " + "id:" + id +
+                "| descricao:" + descricao +
+                "| endereco:" + endereco;
     }
 }

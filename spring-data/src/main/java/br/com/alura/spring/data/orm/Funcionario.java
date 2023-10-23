@@ -32,6 +32,14 @@ public class Funcionario {
     )
     private List<UnidadeTrabalho> unidadeTrabalhos;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Cargo getCargo() {
         return cargo;
     }
@@ -70,5 +78,19 @@ public class Funcionario {
 
     public void setDataContratacao(LocalDate dataContratacao) {
         this.dataContratacao = dataContratacao;
+    }
+
+    public List<UnidadeTrabalho> getUnidadeTrabalhos() {
+        return unidadeTrabalhos;
+    }
+
+    public void setUnidadeTrabalhos(List<UnidadeTrabalho> unidadeTrabalhos) {
+        this.unidadeTrabalhos = unidadeTrabalhos;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario: " + "id:" + id + "| nome:'" + nome + "| cpf:" + cpf + "| salario:" + salario
+                + "| dataContratacao:" + dataContratacao + "| cargo:" + cargo.getDescricao();
     }
 }
