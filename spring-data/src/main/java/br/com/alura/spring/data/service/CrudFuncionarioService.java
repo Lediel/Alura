@@ -154,13 +154,13 @@ public class CrudFuncionarioService {
         Integer page = scanner.nextInt();
         page -= 1;
 
-        Pageable pageable = PageRequest.of(page, 5, Sort.unsorted());
+        Pageable pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.ASC, "nome"));
         Page<Funcionario> funcionarios = funcionarioRepository.findAll(pageable);
 
         System.out.println(funcionarios);
         System.out.println("Pagina Atual: " + funcionarios.getNumber());
         System.out.println("Total paginas: " + funcionarios.getTotalElements());
-        funcionarios.forEach(funcionario -> System.out.println(funcionario));
+        funcionarios.forEach(System.out::println);
     }
 
     private void deletar(Scanner scanner) {
