@@ -24,9 +24,6 @@ public record DadosCadastroPaciente(
     String cpf,
 
     @NotNull
-    Especialidade especialidade,
-
-    @NotNull
     @Valid
     DadosEndereco endereco
 ){}
