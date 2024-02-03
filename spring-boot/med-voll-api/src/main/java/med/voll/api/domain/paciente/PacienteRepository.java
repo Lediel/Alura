@@ -9,5 +9,5 @@ public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     Page<Paciente> findAllByAtivoTrue(Pageable pageable);
 
     @Query("select p.ativo from Paciente p where m.id = :id")
-    Boolean findAtivoById(Long aLong);
+    Boolean findAtivoById(Long id);
 }
