@@ -1,4 +1,4 @@
-package med.voll.api.infra.securiry;
+package med.voll.api.infra.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class SecuriryConfigurations {
+public class SecurityConfigurations {
 
     @Autowired
     private SecurityFilter securityFilter;
