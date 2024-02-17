@@ -2,14 +2,8 @@
   "pensamentos": [
     {
       "id": 1,
-      "conteudo": "Que bom que vc veio",
+      "conteudo": "Que bom que vc nao veio",
       "autoria": "Del",
-      "modelo": "modelo3"
-    },
-    {
-      "id": 3,
-      "conteudo": "Angular é o melhor'",
-      "autoria": "Dev Alura",
       "modelo": "modelo3"
     },
     {
@@ -17,6 +11,12 @@
       "autoria": "Lediel",
       "modelo": "modelo2",
       "id": 4
+    },
+    {
+      "conteudo": "Estou pensando em mandar",
+      "autoria": "Eu mesmo",
+      "modelo": "modelo3",
+      "id": 5
     }
   ]
 }
