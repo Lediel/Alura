@@ -23,18 +23,18 @@ export class CriarPensamentoComponent implements OnInit {
     this.formulario = this.formBuilder.group({
       conteudo: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(3)
+        Validators.pattern(/(.|\s)*\S(.|\s)*/)
       ])],
       autoria: ['', Validators.compose([
         Validators.required,
-        Validators.pattern(/(.|\s)*\S(.|\s)*/)
+        Validators.minLength(3)
       ])],
       modelo: ['modelo1']
     })
   }
 
   criarPensamento() {
-    console.log(this.formulario.status)
+    console.log(this.formulario.get('autoria'))
     if (this.formulario.valid) {
       this.service.criar(this.formulario.value).subscribe(() => {
         this.router.navigate(['/listarPensamento'])
