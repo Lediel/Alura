@@ -36,7 +36,7 @@
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="email">E-mail</label>
       <input name="email" id="email" type="email" class="campo__escrita" ngModel required pattern="^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$" #email="ngModel"/>
-      <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+      <div *ngIf="(email?.invalid && email?.touched) || email?.dirty">
         <app-mensagem *ngIf="email?.errors?.['required']" mensagem="O campo de email deve ser preenchido."></app-mensagem>
         <app-mensagem *ngIf="email?.errors?.['pattern']" mensagem="O campo de email deve seguir este padrão: 'exemplo@dominio.com'"></app-mensagem>
       </div>
@@ -44,37 +44,45 @@
 
 
     <h3 class="principal__subtitulo">Endereço</h3>
-
+    <!-- CEP -->
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="cep">CEP</label>
-      <input name="cep" id="cep" class="campo__escrita" />
-      <div id="erro"></div>
-    </div>
+      <input name="cep" id="cep" class="campo__escrita" ngModel required #cep="ngModel" pattern="^(\d{5})(-?\d{3})$" minlength="8" maxlength="9"/>
+      <div *ngIf="(cep?.invalid && cep?.touched) || cep?.dirty">
+        <app-mensagem *ngIf="cep?.errors?.['required']" mensagem="O campo de CEP é obrigatório"></app-mensagem>
+        <app-mensagem *ngIf="cep?.errors?.['pattern']" mensagem="O campo de CEP deve seguir este exemplo: 00000-000"></app-mensagem>
+      </div>
 
+    </div>
+    <!-- ENDERECO -->
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="endereco">Endereço</label>
       <input name="endereco" id="endereco" class="campo__escrita" />
     </div>
+    <!-- NUMERO -->
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="numero">Numero</label>
         <input name="numero" id="numero" class="campo__escrita" />
       </div>
+      <!-- COMPLEMENTO -->
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="complemento">Complemento</label>
         <input name="complemento" id="complemento" class="campo__escrita" />
       </div>
     </div>
+    <!-- BAIRRO -->
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="bairro">Bairro</label>
       <input name="bairro" id="bairro" class="campo__escrita" />
     </div>
+    <!-- CIDADE -->
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="cidade">Cidade</label>
         <input name="cidade" id="cidade" class="campo__escrita" />
       </div>
-
+    <!-- ESTADO -->
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="estado">UF</label>
         <select id="estado" name="estado" class="campo__escrita">
