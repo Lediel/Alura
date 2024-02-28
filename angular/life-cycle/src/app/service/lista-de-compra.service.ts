@@ -30,7 +30,9 @@ export class ListaDeCompraService {
 
   adicionarItemNaLista(nomeDoItem: string){
     const item = this.criarItem(nomeDoItem)
-    this.listaDeCompra.push(item);
+    if (item.nome.length > 0) {
+      this.listaDeCompra.push(item);
+    }
     //this.atualizarLocalStorage()
   }
 
@@ -48,5 +50,9 @@ export class ListaDeCompraService {
 
   atualizarLocalStorage(){
     localStorage.setItem('itens', JSON.stringify(this.listaDeCompra));
+  }
+
+  limparLocalStorage(){
+    this.listaDeCompra = []
   }
 }
