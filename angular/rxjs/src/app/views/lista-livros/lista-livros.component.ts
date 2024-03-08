@@ -23,7 +23,7 @@ export class ListaLivrosComponent {
     private service: LivroService
   ) { }
 
-  totalDeLivros$ = this.campoBusca.valueChanges.pipe(
+  /*totalDeLivros$ = this.campoBusca.valueChanges.pipe(
     debounceTime(PAUSA),
     filter((valorDigitado) => valorDigitado.length >= 3),
     tap(() => console.log('Fluxo inicial')),
@@ -33,24 +33,24 @@ export class ListaLivrosComponent {
       console.log(erro)
       return of()
     })
-  )
+  )*/
 
   livrosEncontrados$ = this.campoBusca.valueChanges.pipe(
     debounceTime(PAUSA),
     filter((valorDigitado) => valorDigitado.length >= 3),
-    tap(() => console.log("Fluxo inicial")),
     distinctUntilChanged(),
     switchMap((valorDigitado) => this.service.buscar(valorDigitado)),
     tap((retornoAPI) => console.log(retornoAPI)),
+    map(resultado => this.livrosResultado = resultado),
     map(resultado => resultado.items ?? []),
-    map((items) => this.livrosReultadoParaLivros(items)),
+    map((items) => this.livrosResultadoParaLivros(items)),
     catchError(erro => {
       console.log(erro)
       return throwError(() => new Error(this.mensagemErro = "Ops, ocorreu um erro, recarregue a aplicação"))
     })
   )
 
-  livrosReultadoParaLivros(items: Item[]): LivroVolumeInfo[] {
+  livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[] {
     return items.map(item => {
       return new LivroVolumeInfo(item)
     })
