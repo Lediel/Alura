@@ -15,6 +15,7 @@ const PAUSA = 300;
 export class ListaLivrosComponent {
 
   campoBusca = new FormControl()
+  mensagemErro = ""
 
   constructor(
     private service: LivroService
@@ -30,7 +31,7 @@ export class ListaLivrosComponent {
     map((items) => this.livrosReultadoParaLivros(items)),
     catchError(erro => {
       console.log(erro)
-      return throwError(() => new Error("Ops, ocorreu um erro"))
+      return throwError(() => new Error(this.mensagemErro = "Ops, ocorreu um erro, recarregue a aplicação"))
     })
   )
 
